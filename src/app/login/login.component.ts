@@ -10,6 +10,7 @@ import { IUser } from './usuario';
 })
 export class LoginComponent implements OnInit {
   public usuario: IUser = new IUser();
+  public isSignup: string;
   public options: any = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
 
@@ -26,17 +27,24 @@ export class LoginComponent implements OnInit {
 
 
   cadastrarUsuario() {
-    let objCadastro = {
-      email: this.usuario.email,
-      usuario: this.usuario.usuario,
-      senha: this.usuario.senha
+    try {
+      if (this.isSignup == "true") {
+        let objCadastro = {
+          email: this.usuario.email,
+          usuario: this.usuario.usuario,
+          senha: this.usuario.senha
+        }
+
+        this.httpClient.post("http://localhost:3000/user/register/", JSON.stringify(objCadastro), this.options).subscribe((res) => {
+          console.log(res);
+        }, err => {
+          console.log(err);
+        });
+      }
+    } catch (error) {
+      console.log("ERRO:" + error);
     }
 
-    this.httpClient.post("http://localhost:3000/user/register/",JSON.stringify(objCadastro)).subscribe((res) => {
-      console.log(res);
-    }, err => {
-      console.log(err);
-    })
   }
 }
 
