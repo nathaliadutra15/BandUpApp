@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { IUser } from './usuario';
 
@@ -10,41 +11,59 @@ import { IUser } from './usuario';
 })
 export class LoginComponent implements OnInit {
   public usuario: IUser = new IUser();
-  public isSignup: string;
+  public loginType: string;
+  public userError: string;
   public options: any = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
 
-  constructor(private httpClient: HttpClient, private authService: AuthService) { }
+  constructor(private httpClient: HttpClient, private authService: AuthService, private router: Router) {
+    this.loginType = "signin";
+  }
 
   ngOnInit(): void {
-
   }
 
-  cadUser() {
-    console.log("CHAMOU");
-    console.log(this.usuario);
+  checkTipoLogin() {
+    if (this.loginType == "signup") {
+      this.cadastrarUsuario();
+    } else {
+      this.fazerLogin();
+    }
   }
 
+  fazerLogin() {
+    this.userError = undefined;
+    try {
+      this.httpClient.get(`http://localhost:3000/user/${this.usuario.usuario}`, this.options).subscribe((res) => {
+        if (this.authService.logar(this.usuario, res[0])) {
+          this.router.navigate(['/']);
+        } else {
+          this.userError = "Usuário e senha não conferem."
+        }
+      }, err => {
+        this.userError = err.error.message;
+      })
+    } catch (error) {
+
+    }
+  }
 
   cadastrarUsuario() {
     try {
-      if (this.isSignup == "true") {
-        let objCadastro = {
-          email: this.usuario.email,
-          usuario: this.usuario.usuario,
-          senha: this.usuario.senha
-        }
-
-        this.httpClient.post("http://localhost:3000/user/register/", JSON.stringify(objCadastro), this.options).subscribe((res) => {
-          console.log(res);
-        }, err => {
-          console.log(err);
-        });
+      let objCadastro = {
+        email: this.usuario.email,
+        usuario: this.usuario.usuario,
+        senha: this.usuario.senha
       }
+      this.httpClient.post("http://localhost:3000/user/register/", JSON.stringify(objCadastro), this.options).subscribe((res) => {
+      }, err => {
+        this.userError = err.error.message;
+      });
+      this.userError = undefined;
     } catch (error) {
       console.log("ERRO:" + error);
     }
-
   }
 }
+
 

@@ -1,45 +1,34 @@
-<div class="content">
-  <div id="logo_infos">
+<div id="logo_infos">
     <img src="../../assets/imagens/logo_oficial.png" alt="" srcset=""
-      style="margin: 2vh; position: absolute; width: 25vh;">
+      style="margin: 2vh; position:absolute; width: 25vh;">
     <img src="../../assets/imagens/ilustra_app.e3ddb49.png" alt=""
       style="margin: 15vh 5vh; position: absolute; width: 100vh;">
-    <!-- <svg viewBox="0 0 800 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120vh" id="blobSvg">
-      <g transform="translate(148.44762992858887, -0.01581573486328125)">
-        <defs>
-          <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" style="stop-color: #9192eb;"></stop>
-            <stop offset="100%" style="stop-color: #4d31db;"></stop>
-          </linearGradient>
-        </defs>
-        <path class="blob" d="M454.5,279.5Q430,309,423.5,340Q417,371,395,395Q373,419,340,422.5Q307,426,278.5,426.5Q250,427,213,453Q176,479,163,433.5Q150,388,123,375Q96,362,60,342.5Q24,323,27.5,286.5Q31,250,22,211.5Q13,173,69.5,166.5Q126,160,119,110.5Q112,61,147,50Q182,39,216,68.5Q250,98,278,88.5Q306,79,332,90Q358,101,377.5,122Q397,143,417,166Q437,189,458,219.5Q479,250,454.5,279.5Z" fill="url(#gradient)"></path>
-      </g>
-    </svg> -->
-    <!--      <img src="../../assets/imagens/desenho_login.png" alt="" srcset="" width="700vh" style="margin: 20vh 10vh;position: absolute;"> 
- -->
   </div>
 
+<div class="content">
   <div class="form">
-    <input checked id="signin" name="action" type="radio" value="signin">
+    <input [(ngModel)]="loginType" id="signin" name="action" type="radio" value="signin">
     <label for="signin">Sign in</label>
-    <input [(ngModel)]="isSignup" id="signup" name="action" type="radio" value="true">
+    <input [(ngModel)]="loginType" id="signup" name="action" type="radio" value="signup">
     <label for="signup">Sign up</label>
 
     <div id="wrapper">
       <div id="arrow"></div>
-      <input id="emailUsuario" placeholder="Email" type="text" [(ngModel)]="usuario.email">
-      <input id="senhaUsuario" placeholder="Password" type="password" [(ngModel)]="usuario.senha">
       <input id="username" placeholder="Username" type="text" [(ngModel)]="usuario.usuario">
+      <input id="senhaUsuario" placeholder="Password" type="password" [(ngModel)]="usuario.senha">
+      <input id="emailUsuario" placeholder="Email" type="text" [(ngModel)]="usuario.email">
     </div>
 
-    <button (click)="cadastrarUsuario();">
-      <span>
+    <button>
+      <span (click)="checkTipoLogin();">
         <br />
         Sign in
         <br />
         Sign up
       </span>
     </button>
-
+    <div *ngIf="userError">
+      <p style="font-size: 20px; color:rgb(255, 118, 118); font-weight:bolder">{{userError}}</p>
+    </div>
   </div>
 </div>
