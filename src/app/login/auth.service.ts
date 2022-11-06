@@ -9,13 +9,14 @@ export class AuthService {
 
   constructor() { }
 
-  logar(userFromUser: IUser, userFromDB: IUser): boolean {
+  logar(userFromUser: IUser, userFromDB: IUser) {
     if (userFromUser.senha === userFromDB.senha &&
       userFromUser.usuario === userFromDB.usuario) {
       this.autenticado = true;
-      return this.autenticado;
-    } else {
-      return this.autenticado;
     }
+  }
+
+  getAutenticacao(): boolean{
+    return this.autenticado;
   }
 }

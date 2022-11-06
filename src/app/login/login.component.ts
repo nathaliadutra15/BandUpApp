@@ -35,7 +35,8 @@ export class LoginComponent implements OnInit {
     this.userError = undefined;
     try {
       this.httpClient.get(`http://localhost:3000/user/${this.usuario.usuario}`, this.options).subscribe((res) => {
-        if (this.authService.logar(this.usuario, res[0])) {
+        this.authService.logar(this.usuario, res[0]);
+        if (this.authService.getAutenticacao()) {
           this.router.navigate(['/']);
         } else {
           this.userError = "Usuário e senha não conferem."
@@ -44,7 +45,7 @@ export class LoginComponent implements OnInit {
         this.userError = err.error.message;
       })
     } catch (error) {
-
+      console.log("ERRO:" + error);
     }
   }
 
