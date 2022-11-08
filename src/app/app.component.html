@@ -1,20 +1,37 @@
 <div id="cabecalho">
-    <img src="../../assets/imagens/logo_oficial.png" alt="" srcset=""
+    <img id="logo" src="../../assets/imagens/logo_oficial.png" alt="" srcset=""
         style="margin: 5px 10px;top:5px; position:absolute; max-width: 140px; left: 2vh;">
     <nav class="nav">
-        <span><img src="../../assets/imagens/profile.png" alt="" srcset="" id="chat"></span>
+        <a routerLink="/profile/1"><span><img src="../../assets/imagens/profile.png" alt="" srcset="" id="chat"></span></a>
         <ul>
             <abbr title="Home">
-                <li>
-                    <a href="#"><img src="../assets/imagens/home.png" style="max-width: 25px; max-height: 25px;">
+                <li routerLinkActive="active">
+                    <a routerLink=""><img src="../assets/imagens/home.png" style="max-width: 25px; max-height: 25px;">
                     </a>
             </abbr>
+            <abbr title="Music Lab - Marketplace">
+                <li routerLinkActive="active">
+                    <a routerLink="/music-lab">
+                        <img src="../assets/imagens/filter.png" style="max-width: 25px; max-height: 25px;">
+                    </a>
+            </abbr>
+            <abbr title="Comunidade">
+                <li routerLinkActive="active">
+                    <a routerLink="/community">
+                        <img src="../assets/imagens/friends.png" style="max-width: 25px; max-height: 25px;">
+                    </a>
+            </abbr>
+            <abbr title="Mensagens">
+                <li routerLinkActive="active">
+                    <a routerLink="/chat"><img src="../assets/imagens/comment.png"
+                            style="max-width: 25px; max-height: 25px;">
+                    </a>
 
-            <li><a href="#"><img src="../assets/imagens/filter.png" style="max-width: 25px; max-height: 25px;"></a>
-            <li><a href="#"><img src="../assets/imagens/friends.png" style="max-width: 25px; max-height: 25px;"></a>
-            <li><a href="#"><img src="../assets/imagens/comment.png" style="max-width: 25px; max-height: 25px;"></a>
+            </abbr>
         </ul>
     </nav>
 </div>
 
-<router-outlet></router-outlet>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

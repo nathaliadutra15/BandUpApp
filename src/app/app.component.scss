@@ -11,13 +11,13 @@
     align-items: center;
     max-width: 30px;
     max-height: 30px;
+    cursor: pointer;
 }
 
 nav {
     z-index: -1;
     margin: 0 auto;
     max-width: 600px;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, .15);
 }
 
 nav::after {
@@ -48,7 +48,7 @@ nav ul li a {
 
 nav ul li a:hover,
 nav ul li a:focus {
-    background: #aca6ad;
+    background: rgb(46, 0, 99);
 }
 
 
@@ -65,4 +65,14 @@ nav ul li ul li a {
     background: transparent;
     color: #555;
     border-bottom: 1px solid #DDE0E7;
+}
+
+#logo {
+    transition: all 0.10s;
+    cursor: pointer;
+}
+
+#logo:hover {
+    -webkit-filter: drop-shadow(2px 2.5px 2px rgba(255, 255, 255, 0.5));
+    filter: drop-shadow(2px 2.5px 2px rgba(255, 255, 255, 0.5));
 }
