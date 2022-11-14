@@ -10,24 +10,33 @@
                     <img src="../../assets/imagens/profile.png" alt="" srcset=""
                         style="max-width: 70px;max-height: 70px; position:static;">
                 </div>
-                <textarea name="" id="" cols="45" rows="2" placeholder="Escreva aqui seu post"></textarea>
+                <textarea name="" id="" cols="45" rows="1" placeholder="Escreva aqui seu post" [(ngModel)]="postTxt"></textarea>
                 <br>
+                <p id="mediaName">{{fileName}}</p>
                 <div id="buttons">
                     <abbr title="Arquivo de Música">
-                        <img src="../../assets/imagens/arquivo-de-musica.png" alt="" srcset=""
-                            style="width: 23px; height: 23px;">
+                        <label for="music_file">
+                            <img src="../../assets/imagens/arquivo-de-musica.png" alt="" srcset=""
+                                style="width: 23px; height: 23px;">
+                        </label>
+                        <input type="file" name="music_file" id="music_file" accept="audio/*" style="display:none"
+                            (change)="onChangeMusic($event)" [(ngModel)]="musicFileName">
                     </abbr>
-
                     &nbsp;
                     <abbr title="Criar evento">
                         <img src="../../assets/imagens/calendar-pen.png" alt="" srcset=""
                             style="width: 23px; height: 23px;">
                     </abbr>
-
                     &nbsp;
                     <abbr title="Foto/vídeo">
-                        <img src="../../assets/imagens/camera.png" alt="" srcset="" style="width: 23px; height: 23px;">
+                        <label for="pic_file">
+                            <img src="../../assets/imagens/camera.png" alt="" srcset=""
+                                style="width: 23px; height: 23px;">
+                        </label>
+                        <input type="file" name="pic_file" id="pic_file" accept="image/png, image/gif, image/jpeg, video/*" style="display:none"
+                            (change)="onChangePic($event)" [(ngModel)]="imageFileName">
                     </abbr>
+                    &nbsp;
                     <button id="publicar"><b>Publicar</b></button>
                 </div>
             </div>

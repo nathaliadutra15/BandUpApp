@@ -14,7 +14,7 @@
 #post_create {
 	background: #000000;
 	margin: 0 auto;
-	height: 169px;
+	max-height: 185px;
 	width: 600px;
 	border-radius: 10px;
 	display: flex;
@@ -65,6 +65,7 @@ textarea:focus {
 	top: -1px;
 }
 
+
 #buttons #publicar {
 	float: right;
 	background: #7a65E9;
@@ -76,6 +77,11 @@ textarea:focus {
 	height: 25px;
 	width: 90px;
 	transition: all .3s cubic-bezier(.6, 0, .4, 1);
+}
+
+#buttons img {
+	cursor: pointer;
+
 }
 
 #buttons #publicar:hover {
@@ -91,4 +97,17 @@ textarea:focus {
 
 ::-webkit-scrollbar-thumb {
 	background: #7a65E9;
+}
+
+#mediaName {
+	border-radius: 15px;
+	background: #4b4b4b;
+	color: #fff;
+	margin: 0 0 9px 0;
+	max-width: 250px;
+	font-size: 15px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: left;
 }
