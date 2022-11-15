@@ -1,29 +1,29 @@
-<div class="content" infinite-scroll>
+<div class="content-community">
     <div class="filtros">
         <div id="busca">
-            <input type="search" placeholder="Buscar por nome" name="findByName" id="findByName"><button (click)="listarTodosUsuarios();"><img
+            <input type="search" placeholder="Buscar por nome" name="findByName" id="findByName" [(ngModel)]="nomeBusca"><button (click)="buscarNomeUsuario();"><img
                     src="../../assets/imagens/procurar.png" alt="" srcset=""></button>
         </div>
     </div>
-    <div class="resultados">
-        <div id="usuario"  *ngFor="let usuario of listaUsuarios">
-            <div id="imagemUser">
-                <img src="../../assets/imagens/pexels-share-textures-11285435.jpg" alt="" srcset="">
+        <div class="resultados">
+            <div id="usuario"  *ngFor="let usuario of listaUsuarios">
+                <div id="imagemUser">
+                    <img src="../../assets/imagens/pexels-share-textures-11285435.jpg" alt="" srcset="">
+                </div>
+                <br>
+                &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/user.png" alt="" srcset=""> {{usuario.nome}}</label>
+                <br>
+                &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/toque.png" alt="" srcset=""> {{usuario.instrumentos.nomeInstrumento}}</label>
+                <br>
+                &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/musica-alt.png" alt="" srcset=""> {{usuario.generoMusical}}</label>
+                <br>
+                &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/marker.png" alt="" srcset=""> {{usuario.cidade + "-" + usuario.estadoUF}}</label>
+                <div id="rodape_usuario">
+                    <ul>
+                        <li><img src="../../assets/imagens/user-add (1).png" alt="" srcset=""></li>
+                        <li><img src="../../assets/imagens/envelope.png" alt="" srcset=""></li>
+                    </ul>
+                </div>
             </div>
-            <br>
-            &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/user.png" alt="" srcset=""> {{usuario.nome}}</label>
-            <br>
-            &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/toque.png" alt="" srcset=""> {{usuario.instrumentos.nomeInstrumento}}</label>
-            <br>
-            &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/musica-alt.png" alt="" srcset=""> {{usuario.generoMusical}}</label>
-            <br>
-            &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/marker.png" alt="" srcset=""> {{usuario.cidade + "-" + usuario.estadoUF}}</label>
-            <div id="rodape_usuario">
-                <ul>
-                    <li><img src="../../assets/imagens/user-add (1).png" alt="" srcset=""></li>
-                    <li><img src="../../assets/imagens/envelope.png" alt="" srcset=""></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+        </div>    
 </div>

@@ -1,4 +1,4 @@
-.content {
+.content-community {
     background: #18191A;
     width: 100%;
     height: 100vh;
@@ -8,12 +8,13 @@
 }
 
 .filtros {
-    background: #000;
+    background: rgba(255, 255, 255, 0.089);
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(4.5px);
+    -webkit-backdrop-filter: blur(4.5px);
     height: 100%;
     min-width: 30%;
     margin: 0;
-    margin-top: 20px;
-    margin-left: 10px;
 }
 
 .filtros button {
@@ -41,7 +42,7 @@
     display: flex;
     flex-direction: row;
     background: #fff;
-    border-radius: 5px;
+    border-radius: 30px;
     max-height: 35px;
     max-width: 80%;
     margin-top: 20px;
@@ -69,19 +70,27 @@
 }
 
 .resultados {
-    float: left;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 10px;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 #usuario {
     background: #000;
-    height: 280px;
-    width: 250px;
-    float: left;
+    max-height: 280px;
+    max-width: 250px;
+    float: right;
     margin: 10px;
+    cursor: pointer;
+}
 
+#usuario:hover {
+    -webkit-backdrop-filter: blur(4.5px);
+    box-shadow: 0 10px 20px 0 rgba(255, 255, 255, 0.075);
 }
 
 #usuario img {
@@ -101,7 +110,7 @@
 
 #rodape_usuario {
     float: right;
-    margin-top:10px;
+    margin-top: 10px;
 }
 
 #rodape_usuario img {
@@ -142,4 +151,3 @@
 #rodape_usuario ul li a:hover {
     background: #5d43df;
 }
-

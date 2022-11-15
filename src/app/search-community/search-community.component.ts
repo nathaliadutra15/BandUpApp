@@ -11,20 +11,21 @@ import { AuthService } from '../login/auth.service';
 export class SearchCommunityComponent implements OnInit {
   public options: any = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
   public listaUsuarios = [];
+  public usuariosBusca = [];
   public listaGeneros: string = "";
   public instrumentos = [];
   public objCardUsuario: any[];
-
+  public nomeBusca: string;
   public local;
 
   constructor(private httpClient: HttpClient, private authService: AuthService, private router: Router) {
+    this.listarTodosUsuarios();
   }
 
   ngOnInit(): void {
   }
 
   listarTodosUsuarios() {
-
     try {
       this.httpClient.get('http://localhost:3000/user/list', this.options).subscribe((res) => {
         let data = res;
@@ -35,10 +36,21 @@ export class SearchCommunityComponent implements OnInit {
         console.log("ERRO:" + err);
 
       });
-      console.log(this.listaUsuarios);
     } catch (error) {
       console.log("ERRO:" + error);
     }
   }
+
+  buscarNomeUsuario() {
+    let usuariosFiltrados = [];
+    this.listaUsuarios.forEach(e => {
+      if (e.nome == this.nomeBusca && e.nome != null) {
+        usuariosFiltrados.push(e);
+      }
+    });
+    
+    this.listaUsuarios = usuariosFiltrados;
+  }
+
 
 }
