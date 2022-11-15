@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AuthService } from './login/auth.service';
 
 @Component({
@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'band-up-app';
   auth: boolean = false;
 
-  constructor(private authService: AuthService){}
+  constructor(protected authService: AuthService){}
 
   ngOnInit(){
     this.auth = this.authService.getAutenticacao();

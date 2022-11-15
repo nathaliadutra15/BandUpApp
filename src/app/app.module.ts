@@ -12,6 +12,7 @@ import { SearchCommunityComponent } from './search-community/search-community.co
 import { ChatComponent } from './chat/chat.component';
 import { MarketplaceComponent } from './marketplace/marketplace.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ProfileComponent } from './profile/profile.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CommonModule  
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

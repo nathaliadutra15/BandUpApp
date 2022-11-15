@@ -37,7 +37,7 @@
                             (change)="onChangePic($event)" [(ngModel)]="imageFileName">
                     </abbr>
                     &nbsp;
-                    <button id="publicar"><b>Publicar</b></button>
+                    <button id="publicar" (click)="enviarPost();"><b>Publicar</b></button>
                 </div>
             </div>
         </div>

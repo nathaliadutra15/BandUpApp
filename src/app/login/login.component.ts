@@ -54,7 +54,16 @@ export class LoginComponent implements OnInit {
       let objCadastro = {
         email: this.usuario.email,
         usuario: this.usuario.usuario,
-        senha: this.usuario.senha
+        senha: this.usuario.senha,
+        nome: null,
+        dataNasc: null,
+        generoMusical:[],
+        instrumentos:[],
+        estadoUF: null,
+        cidade: null,
+        posts: [],
+        createdAt: new Date,
+        updatedAt: new Date
       }
       this.httpClient.post("http://localhost:3000/user/register/", JSON.stringify(objCadastro), this.options).subscribe((res) => {
       }, err => {

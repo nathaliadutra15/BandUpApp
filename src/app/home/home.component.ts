@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit {
   public postTxt: string;
   public isShared = false;
   public midiaType: string;
+  public options: any = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+
 
   constructor(private httpClient: HttpClient, private authService: AuthService, private router: Router) {
     if (!this.authService.getAutenticacao()) {
@@ -32,6 +34,7 @@ export class HomeComponent implements OnInit {
     this.midiaType = "music";
     this.fileName = this.musicFileName.replace(/C:+\\+(\w+)+\\/, " ");
     this.musicFile = event;
+    
   }
 
   onChangePic(event) {
@@ -40,32 +43,38 @@ export class HomeComponent implements OnInit {
     this.picFile = event;
   }
 
-  eviarPost() {
+  enviarPost() {
+    console.log(this.musicFile);
     try {
       let objPost = {
-        posts:[
-          {
-            postTxt: this.postTxt,
-            midia: this.midiaType == "music" ? this.musicFile : (this.midiaType == "picture" ? this.picFile : null), 
-            events: [],
-            comments: [],
-            sharings: [],
-            likes: [],
-            savings: [],
-            isShared: this.isShared
-          }
-        ]
+        posts:
+        {
+          createdAt: new Date,
+          updatedAt: new Date,
+          postTxt: this.postTxt,
+          midia: this.midiaType == "music" ? <Object>this.musicFile : (this.midiaType == "picture" ? this.picFile : null),
+          events: [],
+          comments: [],
+          sharings: [],
+          likes: [],
+          savings: [],
+          isShared: this.isShared
+        }
+
       }
-     
-      /* this.httpClient.patch("http://localhost:3000/post/create/", JSON.stringify(objCadastro), this.options).subscribe((res) => {
+
+      console.log(objPost);
+
+      this.httpClient.patch(`http://localhost:3000/post/create/${this.authService.getUserAutenticado()}`, JSON.stringify(objPost), this.options).subscribe((res) => {
+        console.log(res);
       }, err => {
-        this.userError = err.error.message;
+        console.log(err);
       });
-      this.userError = undefined; */
     } catch (error) {
-      
+      console.log(error);
+
     }
-      
+
   }
 
 }
