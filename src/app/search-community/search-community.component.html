@@ -1,23 +1,51 @@
 <div class="content-community">
     <div class="filtros">
-        <div id="busca">
-            <input type="search" placeholder="Buscar por nome" name="findByName" id="findByName" [(ngModel)]="nomeBusca"><button (click)="buscarNomeUsuario();"><img
-                    src="../../assets/imagens/procurar.png" alt="" srcset=""></button>
+        <div id="cabecalho_resultados">
+            <div id="busca">
+                <input type="search" placeholder="Buscar por nome" name="findByName" id="findByName"
+                    [(ngModel)]="nomeBusca"><button (click)="buscarNomeUsuario();"><img
+                        src="../../assets/imagens/procurar.png" alt="" srcset=""></button>
+            </div>
         </div>
+        <br>
+        <ul>
+            <li>
+                <span>Gêneros Musicais</span>
+                <label for="rock">Rock</label><input type="checkbox" name="rock" id="rock">
+                <label for="sertanejo">Sertanejo</label><input type="checkbox" name="sertanejo" id="sertanejo">
+                <label for="pop">Pop</label><input type="checkbox" name="pop" id="pop">
+                <label for="mpb">MPB</label><input type="checkbox" name="mpb" id="mpb">
+                <label for="samba">Samba</label><input type="checkbox" name="samba" id="samba">
+                <label for="pagode">Pagode</label><input type="checkbox" name="rock" id="rock">
+                <label for="indie">Indie</label><input type="checkbox" name="rock" id="rock">
+                <label for="classico">Clássico</label><input type="checkbox" name="rock" id="rock">
+
+            </li>
+            <li>Instrumento Musical</li>
+            <li>Localização</li>
+            <li>Nível de profissionalismo</li>
+        </ul>
     </div>
+   
+    <div class="contentResults">
+        
         <div class="resultados">
-            <div id="usuario"  *ngFor="let usuario of listaUsuarios">
+            <div id="usuario" *ngFor="let usuario of listaUsuarios">
                 <div id="imagemUser">
                     <img src="../../assets/imagens/pexels-share-textures-11285435.jpg" alt="" srcset="">
                 </div>
                 <br>
-                &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/user.png" alt="" srcset=""> {{usuario.nome}}</label>
+                &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/user.png" alt="" srcset="">
+                    {{usuario.nome}}</label>
                 <br>
-                &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/toque.png" alt="" srcset=""> {{usuario.instrumentos.nomeInstrumento}}</label>
+                &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/toque.png" alt="" srcset="">
+                    {{usuario.instrumentos.nomeInstrumento}}</label>
                 <br>
-                &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/musica-alt.png" alt="" srcset=""> {{usuario.generoMusical}}</label>
+                &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/musica-alt.png" alt="" srcset="">
+                    {{usuario.generoMusical}}</label>
                 <br>
-                &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/marker.png" alt="" srcset=""> {{usuario.cidade + "-" + usuario.estadoUF}}</label>
+                &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/marker.png" alt="" srcset=""> {{usuario.cidade
+                    + "-" + usuario.estadoUF}}</label>
                 <div id="rodape_usuario">
                     <ul>
                         <li><img src="../../assets/imagens/user-add (1).png" alt="" srcset=""></li>
@@ -25,5 +53,7 @@
                     </ul>
                 </div>
             </div>
-        </div>    
+        </div>
+    </div>
+    
 </div>

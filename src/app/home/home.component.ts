@@ -21,9 +21,9 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private httpClient: HttpClient, private authService: AuthService, private router: Router) {
-    if (!this.authService.getAutenticacao()) {
+    /* if (!this.authService.getAutenticacao()) {
       this.router.navigate(['/login']);
-    }
+    } */
   }
 
   ngOnInit(): void {

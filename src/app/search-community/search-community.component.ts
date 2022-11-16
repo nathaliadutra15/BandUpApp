@@ -44,7 +44,7 @@ export class SearchCommunityComponent implements OnInit {
   buscarNomeUsuario() {
     let usuariosFiltrados = [];
     this.listaUsuarios.forEach(e => {
-      if (e.nome == this.nomeBusca && e.nome != null) {
+      if (this.nomeBusca.includes(e.nome) && e.nome != null) {
         usuariosFiltrados.push(e);
       }
     });
