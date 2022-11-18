@@ -12,7 +12,10 @@
 }
 
 #post_create {
-	background: #000000;
+	background: rgba(255, 255, 255, 0.089);
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(4.5px);
+    -webkit-backdrop-filter: blur(4.5px);
 	margin: 0 auto;
 	max-height: 185px;
 	width: 600px;
@@ -37,7 +40,7 @@
 }
 
 textarea {
-	background: #000000;
+	background: #2D2E2F;
 	margin-left: 90px;
 	min-height: 100px;
 	resize: none;
