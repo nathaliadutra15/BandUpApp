@@ -88,8 +88,7 @@
                 <label for="Rap"> Rap </label>
                 <br>
                 <input type="checkbox" name="Outro" id="Outro" (change)="setIsOutroGenero()">
-                <input type="text" name="" id="" placeholder="Outro"
-                    [(ngModel)]="nomeOutroGenero"
+                <input type="text" name="" id="" placeholder="Outro" [(ngModel)]="nomeOutroGenero"
                     style="width: 120px; height:23px; text-indent: 1px; background:#2D2E2F; border: none;">
             </div>
         </div>
@@ -130,22 +129,27 @@
             </select>
         </div>
         <button (click)="aplicarFiltros();">Filtrar</button>
-
+        <button style="background: #df4343 ;" type="reset">Limpar filtros</button>
     </div>
 
     <div class="contentResults">
 
         <div class="resultados">
-            <div id="usuario" *ngFor="let usuario of listaUsuarios">
-                <div id="imagemUser">
-                    <img src="../../assets/imagens/pexels-share-textures-11285435.jpg" alt="" srcset="">
-                </div>
+            <div id="usuario" *ngFor="let usuario of listaUsuarios" routerLinkActive="active">
+
+                <a [routerLink]="['/profile', usuario.usuario]">
+                    <div id="imagemUser">
+                        <img src="../../assets/imagens/265022977_504567444335164_4044114440121806328_n.jpg" alt=""
+                            srcset="">
+                    </div>
+                </a>
                 <br>
                 &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/user.png" alt="" srcset="">
                     {{usuario.nome}}</label>
                 <br>
-                &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/toque.png" alt="" srcset="">
-                    {{usuario.instrumentos.nomeInstrumento}}</label>
+                &nbsp;<img src="../../assets/imagens/toque.png" alt="" srcset=""><label for="nomeUsuario"
+                    *ngFor="let instrumento of usuario.instrumentos">
+                    {{instrumento.nomeInstrumento + ' '}}</label>
                 <br>
                 &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/musica-alt.png" alt="" srcset="">
                     {{usuario.generoMusical}}</label>
@@ -153,12 +157,10 @@
                 &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/marker.png" alt="" srcset="">
                     {{usuario.cidade
                     + "-" + usuario.estadoUF}}</label>
+
                 <div id="rodape_usuario">
-                    <ul>
-                        <li (click)="seguirUsuario(usuario.usuario);"><img src="../../assets/imagens/user-add (1).png"
-                                alt="" srcset=""></li>
-                        <li><img src="../../assets/imagens/envelope.png" alt="" srcset=""></li>
-                    </ul>
+                    <button><img src="../../assets/imagens/user-add (1).png" alt="" srcset="">&nbsp;Seguir </button>
+                    <button><img src="../../assets/imagens/user-add (1).png" alt="" srcset="">&nbsp;Mensagem </button>
                 </div>
             </div>
         </div>

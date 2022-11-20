@@ -10,6 +10,7 @@ import { AuthService } from '../login/auth.service';
 })
 export class SearchCommunityComponent implements OnInit {
   public options: any = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+
   public listaUsuarios = [];
   public usuariosBusca = [];
   public generosMusicais = [];
@@ -19,8 +20,8 @@ export class SearchCommunityComponent implements OnInit {
   public nomeBusca: string;
   public nivelInstrumento;
 
-  public cidade;
-  public uf;
+  public cidade="";
+  public uf="";
 
   public isOutroInstrumento: boolean = false;
   public isOutroGenero: boolean = false;
@@ -30,15 +31,19 @@ export class SearchCommunityComponent implements OnInit {
   public listaNiveis = ["Iniciante", "Intermediário", "Avançado"];
 
   constructor(private httpClient: HttpClient, private authService: AuthService, private router: Router) {
-    /*  if (!this.authService.getAutenticacao()) {
+    if (!this.authService.getAutenticacao()) {
        this.router.navigate(['/login']);
-     } */
+     }
 
 
   }
 
   ngOnInit(): void {
     this.listarTodosUsuarios();
+  }
+
+  reset(){
+    this.router.navigate(['/login']);
   }
 
   listarTodosUsuarios() {
@@ -60,6 +65,7 @@ export class SearchCommunityComponent implements OnInit {
   }
 
   buscarNomeUsuario() {
+    this.listarTodosUsuarios();
     let usuariosFiltrados = [];
     if (this.nomeBusca.length > 0) {
       this.listaUsuarios.forEach(e => {
@@ -117,7 +123,6 @@ export class SearchCommunityComponent implements OnInit {
     let instrumentoAdd = event.path[0].name.toString();
     if (this.nomesInstrumentos.length > 0) {
       if (this.nomesInstrumentos.includes(event.path[0].name.toString())) {
-        console.log(this.nomesInstrumentos.includes(instrumentoAdd))
         this.nomesInstrumentos = this.nomesInstrumentos.filter(instrumento => instrumento != instrumentoAdd);
       } else {
         this.nomesInstrumentos.push(instrumentoAdd);
@@ -125,15 +130,20 @@ export class SearchCommunityComponent implements OnInit {
     } else {
       this.nomesInstrumentos.push(instrumentoAdd);
     }
-
   }
 
   setGeneroMusicalChecado(event) {
-    this.generosMusicais.push(event.path[0].name.toString());
-  }
-
-  getNivel(event) {
-    console.log(event);
+    let generoMusicalAdd = event.path[0].name.toString();
+    if (this.generosMusicais.length > 0) {
+      if (this.generosMusicais.includes(event.path[0].name.toString())) {
+        console.log(this.generosMusicais.includes(generoMusicalAdd))
+        this.generosMusicais = this.generosMusicais.filter(genero => genero != generoMusicalAdd);
+      } else {
+        this.generosMusicais.push(generoMusicalAdd);
+      }
+    } else {
+      this.generosMusicais.push(generoMusicalAdd);
+    }
   }
 
   filtrarPorInstrumento() {
@@ -150,12 +160,57 @@ export class SearchCommunityComponent implements OnInit {
     this.listaUsuarios = usuariosFiltrados;
   }
 
+  filtrarPorGeneroMusical() {
+    let usuariosFiltrados = [];
+    this.generosMusicais.forEach(genero => {
+      this.listaUsuarios.forEach(user => {
+        for (let i = 0; i < user.generoMusical.length; i++) {
+          if (user != null && user.generoMusical[i].toLowerCase() == genero.toLowerCase()) {
+            usuariosFiltrados.push(user);
+          }
+        }
+      });
+    });
+    this.listaUsuarios = usuariosFiltrados;
+  }
+
+  filtrarPorCidade() {
+    let usuariosFiltrados = [];
+
+    this.listaUsuarios.forEach(user => {
+      if (user != null && user.cidade.toLowerCase().includes(this.cidade.toLowerCase())) {
+        usuariosFiltrados.push(user);
+      }
+    });
+    this.listaUsuarios = usuariosFiltrados;
+  }
+
+  filtrarPorEstado() {
+    let usuariosFiltrados = [];
+
+    this.listaUsuarios.forEach(user => {
+      if (user != null && user.estadoUF.toLowerCase().includes(this.uf.toLowerCase())) {
+        usuariosFiltrados.push(user);
+      }
+    });
+    this.listaUsuarios = usuariosFiltrados;
+  }
+
   aplicarFiltros() {
+    console.log(this.uf)
     if (this.nomesInstrumentos.length > 0) {
-      this.filtrarPorInstrumento();
-    } else {
+      return this.filtrarPorInstrumento();
+    } else if (this.generosMusicais.length > 0) {
+      return this.filtrarPorGeneroMusical();
+    } else if (this.cidade.length > 0) {
+      this.filtrarPorCidade();
+    } else if (this.uf.length > 0) {
+      this.filtrarPorEstado();
+    }
+    else {
       this.listarTodosUsuarios();
     }
+
   }
 
 

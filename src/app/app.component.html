@@ -1,4 +1,4 @@
-<div id="cabecalho"><!--  *ngIf="authService.getAutenticacao() == true" -->
+<div id="cabecalho" *ngIf="authService.getAutenticacao() == true">
     <img id="logo" src="../../assets/imagens/logo_oficial.png" alt="" srcset=""
         style="margin: 5px 10px;top:5px; position:absolute; max-width: 140px; left: 2vh;">
     <nav class="nav">

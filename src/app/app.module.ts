@@ -15,6 +15,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ComplementRegistrationComponent } from './complement-registration/complement-registration.component';
+import { RouteCommunityModule } from './search-community/route-community.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ComplementRegistrationComponent } from './complement-registration/compl
     HttpClientModule,
     FormsModule,
     CommonModule,
-    NgbModule
+    NgbModule,
+    RouteCommunityModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
