@@ -1,4 +1,4 @@
-<div id="cabecalho"  > <!-- *ngIf="authService.getAutenticacao() == true" -->
+<div id="cabecalho"><!--  *ngIf="authService.getAutenticacao() == true" -->
     <img id="logo" src="../../assets/imagens/logo_oficial.png" alt="" srcset=""
         style="margin: 5px 10px;top:5px; position:absolute; max-width: 140px; left: 2vh;">
     <nav class="nav">
@@ -9,16 +9,16 @@
                     <a routerLink=""><img src="../assets/imagens/home.png" style="max-width: 25px; max-height: 25px;">
                     </a>
             </abbr>
-            <abbr title="Music Lab - Marketplace">
+            <abbr title="Buscar na comunidade">
                 <li routerLinkActive="active">
-                    <a routerLink="/music-lab">
-                        <img src="../assets/imagens/filter.png" style="max-width: 25px; max-height: 25px;">
+                    <a routerLink="/community">
+                        <img src="../assets/imagens/filter.png" style="max-width: 25px; max-height: 30px;">
                     </a>
             </abbr>
             <abbr title="Perfil">
                 <li routerLinkActive="active">
-                    <a routerLink="/profile/1/visit">
-                        <img src="../assets/imagens/account.png" style="max-width: 25px; max-height: 25px;">
+                    <a [routerLink]="['profile', authService.getUserAutenticado()]">
+                        <img src="../assets/imagens/account.png" style="max-width: 25px; min-height: 25px;">
                     </a>
             </abbr>
             <abbr title="Mensagens">

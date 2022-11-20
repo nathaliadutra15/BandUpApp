@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ChatComponent } from './chat/chat.component';
+import { ComplementRegistrationComponent } from './complement-registration/complement-registration.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MarketplaceComponent } from './marketplace/marketplace.component';
@@ -21,7 +22,7 @@ const routes: Routes = [{
 }, {
   path: 'profile/:username', component: ProfileComponent
 }, {
-  path: 'profile/:username/visit', component: ProfileVisitorComponent
+  path: 'registration', component: ComplementRegistrationComponent
 }];
 
 @NgModule({

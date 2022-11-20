@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
       this.httpClient.get(`http://localhost:3000/user/${this.usuario.usuario}`, this.options).subscribe((res) => {
         this.authService.logar(this.usuario, res[0]);
         if (this.authService.getAutenticacao()) {
+          this.authService.setUserInformation(res);
           this.router.navigate(['/']);
         } else {
           this.userError = "Usuário e senha não conferem."
@@ -62,10 +63,14 @@ export class LoginComponent implements OnInit {
         estadoUF: null,
         cidade: null,
         posts: [],
+        seguidores: [],
+        seguindo: [],
         createdAt: new Date,
         updatedAt: new Date
       }
       this.httpClient.post("http://localhost:3000/user/register/", JSON.stringify(objCadastro), this.options).subscribe((res) => {
+        this.authService.setSignupUsername(objCadastro.usuario);
+        this.router.navigate(['/registration']);
       }, err => {
         this.userError = err.error.message;
       });

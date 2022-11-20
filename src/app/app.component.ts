@@ -9,8 +9,11 @@ import { AuthService } from './login/auth.service';
 export class AppComponent {
   title = 'band-up-app';
   auth: boolean = false;
+  public user: string;
 
-  constructor(protected authService: AuthService){}
+  constructor(public authService: AuthService){
+    this.user = authService.getUserAutenticado();
+  }
 
   ngOnInit(){
     this.auth = this.authService.getAutenticacao();

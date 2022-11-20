@@ -6,30 +6,135 @@
                     [(ngModel)]="nomeBusca"><button (click)="buscarNomeUsuario();"><img
                         src="../../assets/imagens/procurar.png" alt="" srcset=""></button>
             </div>
-            
         </div>
         <br>
-        <!-- <ul>
-            <li>
-                <span>Gêneros Musicais</span>
-                <label for="rock">Rock</label><input type="checkbox" name="rock" id="rock">
-                <label for="sertanejo">Sertanejo</label><input type="checkbox" name="sertanejo" id="sertanejo">
-                <label for="pop">Pop</label><input type="checkbox" name="pop" id="pop">
-                <label for="mpb">MPB</label><input type="checkbox" name="mpb" id="mpb">
-                <label for="samba">Samba</label><input type="checkbox" name="samba" id="samba">
-                <label for="pagode">Pagode</label><input type="checkbox" name="rock" id="rock">
-                <label for="indie">Indie</label><input type="checkbox" name="rock" id="rock">
-                <label for="classico">Clássico</label><input type="checkbox" name="rock" id="rock">
+        <label for="instrumentos" style="margin: 0; opacity: .7; margin-top: 10px;">Instrumentos músicais</label>
+        <div id="instrumentos">
+            <div id="coluna1">
+                <input type="checkbox" name="Guitarra" id="Guitarra" value="Guitarra"
+                    (change)="setInstrumentoChecado($event)">
+                <label for="Guitarra"> Guitarra</label>
 
-            </li>
-            <li>Instrumento Musical</li>
-            <li>Localização</li>
-            <li>Nível de profissionalismo</li>
-        </ul> -->
+                <br>
+                <input type="checkbox" name="Violão" id="Violão" (change)="setInstrumentoChecado($event)">
+                <label for="Violão"> Violão</label>
+
+                <br>
+                <input type="checkbox" name="Voz" id="Voz" (change)="setInstrumentoChecado($event)">
+                <label for="Voz"> Voz </label>
+
+                <br>
+                <input type="checkbox" name="Bateria" id="Bateria" (change)="setInstrumentoChecado($event)">
+                <label for="Bateria"> Bateria </label>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div id="coluna2">
+                <input type="checkbox" name="Sanfona" id="Sanfona" (change)="setInstrumentoChecado($event)">
+                <label for="Sanfona"> Sanfona</label>
+
+                <br>
+                <input type="checkbox" name="Baixo" id="Baixo" (change)="setInstrumentoChecado($event)">
+                <label for="Baixo"> Baixo</label>
+
+                <br>
+                <input type="checkbox" name="Teclado" id="Teclado" (change)="setInstrumentoChecado($event)">
+                <label for="Teclado"> Teclado </label>
+
+                <br>
+                <input type="checkbox" name="Outro" id="Outro" (change)="setIsOutroInstrumento()">
+                <input type="text" name="" id="outroInput" placeholder="Outro"
+                    style="width: 120px; height:23px; text-indent: 1px; background:#2D2E2F; border: none;"
+                    [(ngModel)]="nomeOutroInstrumento">
+            </div>
+        </div>
+        <br>
+        <label for="nivel" style="margin: 0; opacity: .7; margin-top: 10px;">Nível &nbsp;</label>
+        <select name="nivel" id="nivel" style="width: 100%; height: 35px;" [(ngModel)]="nivelInstrumento">
+            <option value="" selected disabled>Nível</option>
+            <option *ngFor="let nivel of listaNiveis" [value]="nivel">{{nivel}}</option>
+        </select>
+        <br> <br>
+        <label for="generoMusical" style="margin: 0; opacity: .7; margin-top: 10px;">Gêneros músicais</label>
+        <div id="generoMusical">
+            <div id="coluna1">
+                <input type="checkbox" name="Rock" id="Rock" (change)="setGeneroMusicalChecado($event)">
+                <label for="Rock"> Rock </label>
+                <br>
+                <input type="checkbox" name="Pop" id="Pop" (change)="setGeneroMusicalChecado($event)">
+                <label for="Pop"> Pop </label>
+                <br>
+                <input type="checkbox" name="Indie" id="Indie" (change)="setGeneroMusicalChecado($event)">
+                <label for="Indie"> Indie </label>
+                <br>
+                <input type="checkbox" name="Sertanejo" id="Sertanejo" (change)="setGeneroMusicalChecado($event)">
+                <label for="Sertanejo"> Sertanejo </label>
+                <br>
+                <input type="checkbox" name="Samba" id="Samba" (change)="setGeneroMusicalChecado($event)">
+                <label for="Samba"> Samba </label>
+
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div id="coluna2">
+                <input type="checkbox" name="MPB" id="MPB" (change)="setGeneroMusicalChecado($event)">
+                <label for="MPB"> MPB </label>
+                <br>
+                <input type="checkbox" name="Forró" id="Forró" (change)="setGeneroMusicalChecado($event)">
+                <label for="Forró"> Forró </label>
+                <br>
+                <input type="checkbox" name="Funk" id="Funk" (change)="setGeneroMusicalChecado($event)">
+                <label for="Funk"> Funk </label>
+                <br>
+                <input type="checkbox" name="Rap" id="Rap" (change)="setGeneroMusicalChecado($event)">
+                <label for="Rap"> Rap </label>
+                <br>
+                <input type="checkbox" name="Outro" id="Outro" (change)="setIsOutroGenero()">
+                <input type="text" name="" id="" placeholder="Outro"
+                    [(ngModel)]="nomeOutroGenero"
+                    style="width: 120px; height:23px; text-indent: 1px; background:#2D2E2F; border: none;">
+            </div>
+        </div>
+        <br>
+        <label for="generoMusical" style="margin: 0; opacity: .7; margin-top: 10px;">Cidade e Estado</label>
+        <div id="local">
+            <input name="cidade" id="cidade" type="text" placeholder="Cidade" [(ngModel)]="cidade">
+            &nbsp;
+            <select name="uf" id="uf" style="width: 150px; height: 39.1px;" [(ngModel)]="uf">
+                <option value=" " disabled>Estado</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapa</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceara</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espirito Santo</option>
+                <option value="GO">Goias</option>
+                <option value="MA">Maranhao</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Para</option>
+                <option value="PB">Paraiba</option>
+                <option value="PR">Parana</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piaui</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondonia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">Sao Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+            </select>
+        </div>
+        <button (click)="aplicarFiltros();">Filtrar</button>
+
     </div>
-   
+
     <div class="contentResults">
-        
+
         <div class="resultados">
             <div id="usuario" *ngFor="let usuario of listaUsuarios">
                 <div id="imagemUser">
@@ -45,16 +150,19 @@
                 &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/musica-alt.png" alt="" srcset="">
                     {{usuario.generoMusical}}</label>
                 <br>
-                &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/marker.png" alt="" srcset=""> {{usuario.cidade
+                &nbsp;<label for="nomeUsuario"><img src="../../assets/imagens/marker.png" alt="" srcset="">
+                    {{usuario.cidade
                     + "-" + usuario.estadoUF}}</label>
                 <div id="rodape_usuario">
                     <ul>
-                        <li><img src="../../assets/imagens/user-add (1).png" alt="" srcset=""></li>
+                        <li (click)="seguirUsuario(usuario.usuario);"><img src="../../assets/imagens/user-add (1).png"
+                                alt="" srcset=""></li>
                         <li><img src="../../assets/imagens/envelope.png" alt="" srcset=""></li>
                     </ul>
                 </div>
             </div>
         </div>
+
     </div>
-    
+
 </div>

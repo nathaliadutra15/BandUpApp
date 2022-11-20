@@ -13,8 +13,8 @@ import { ChatComponent } from './chat/chat.component';
 import { MarketplaceComponent } from './marketplace/marketplace.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CommonModule } from '@angular/common';
-import { ProfileVisitorComponent } from './profile-visitor/profile-visitor.component';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ComplementRegistrationComponent } from './complement-registration/complement-registration.component';
 
 @NgModule({
   declarations: [
@@ -24,17 +24,17 @@ import { ProfileVisitorComponent } from './profile-visitor/profile-visitor.compo
     SearchCommunityComponent,
     ChatComponent,
     MarketplaceComponent,
-    ProfileComponent,
-    ProfileVisitorComponent
-  ],
+    ComplementRegistrationComponent,
+    ProfileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CommonModule  
+    CommonModule,
+    NgbModule
   ],
   providers: [AuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

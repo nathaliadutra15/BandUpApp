@@ -7,6 +7,9 @@ import { IUser } from './usuario';
 export class AuthService {
   private autenticado: boolean = false;
   private usuario: string;
+  private userInfo;
+  private isSignup: boolean = false;
+  private signupUsername: string;
   
   constructor() { }
 
@@ -24,5 +27,26 @@ export class AuthService {
 
   getUserAutenticado() {
     return this.usuario;
+  }
+
+  setUserInformation(userInformation) {
+    this.userInfo = userInformation;
+  }
+
+  getUserInformation() {
+    return this.userInfo;
+  }
+
+  setSignupUsername(username:string){
+    this.signupUsername = username;
+    this.isSignup = true;
+  }
+
+  isSignUp() {
+    return this.isSignup;
+  }
+
+  getSignUpUsername() {
+    return this.signupUsername;
   }
 }

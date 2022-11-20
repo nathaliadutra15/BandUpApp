@@ -1,0 +1,183 @@
+<div class="registrationContent">
+    <img src="../../assets/imagens/logo_oficial.png" alt="" srcset=""
+      style="margin: 2vh; position:absolute; width: 25vh;">
+    <div class="infos">
+        <div id="textos">
+            <p id="titulo">ESTAMOS QUASE LÁ!</p>
+            <br>
+            <br>
+
+        </div>
+    </div>
+    <div class="form">
+        <b>
+            <p style="text-align:left; font-size: 25px; font-weight: 500px; margin: 10px; text-align: center;">Para uma
+                melhor experiência na
+                plataforma, por favor,
+                prossiga com o preenchimento das informações solicitadas.</p>
+        </b>
+        <br>
+        <div id="formulario_pessoal">
+            <h1 style=" background: #dddddd;">Dados Pessoais</h1>
+            <div id="dadosPessoais">
+                <input name="nome" id="nome" placeholder="Nome" type="text" [(ngModel)]="nome">
+                <input name="dtNasc" id="dtNasc" type="text" onfocus="(this.type='date')"
+                    placeholder="Data de Nascimento" style="width: 270px;" [(ngModel)]="dataNasc">
+                <input name="cidade" id="cidade" type="text" placeholder="Cidade" [(ngModel)]="cidade">
+                <select name="uf" id="uf" [(ngModel)]="uf">
+                    <option value="" hidden>Estado</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapa</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceara</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espirito Santo</option>
+                    <option value="GO">Goias</option>
+                    <option value="MA">Maranhao</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Para</option>
+                    <option value="PB">Paraiba</option>
+                    <option value="PR">Parana</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piaui</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondonia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">Sao Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+            </div>
+            <hr>
+            <h1>Dados Profissionais</h1>
+            <label for="instrumentos" style="margin: 0; opacity: .7; margin-top: 10px;">Instrumentos músicais</label>
+            <br>
+            <div id="instrumentos">
+                <div id="coluna1">
+                    <input type="checkbox" name="Guitarra" id="Guitarra" value="Guitarra" (change)="setInstrumentoChecado($event)">
+                    <label for="Guitarra"> Guitarra</label>
+                    <select name="nivelGuitarra" id="nivelGuitarra" (change)="setNivelInstrumento($event)">
+                        <option value="" hidden>Nível</option>
+                        <option value="InicianteGuitarra">Iniciante</option>
+                        <option value="IntermediárioGuitarra">Intermediário</option>
+                        <option value="AvançadoGuitarra">Avançado</option>
+                    </select>
+                    <br>
+                    <input type="checkbox" name="Violão" id="Violão" (change)="setInstrumentoChecado($event)">
+                    <label for="Violão"> Violão</label>
+                    <select name="nivelViolão" id="nivelViolão" (change)="setNivelInstrumento($event)">
+                        <option value="" hidden>Nível</option>
+                        <option value="InicianteViolão">Iniciante</option>
+                        <option value="IntermediárioViolão">Intermediário</option>
+                        <option value="AvançadoViolão">Avançado</option>
+                    </select>
+                    <br>
+                    <input type="checkbox" name="Voz" id="Voz" (change)="setInstrumentoChecado($event)">
+                    <label for="Voz"> Voz </label>
+                    <select name="nivelVoz" id="nivelVoz" (change)="setNivelInstrumento($event)">
+                        <option value="" hidden>Nível</option>
+                        <option value="InicianteVoz">Iniciante</option>
+                        <option value="IntermediárioVoz">Intermediário</option>
+                        <option value="AvançadoVoz">Avançado</option>
+                    </select>
+                    <br>
+                    <input type="checkbox" name="Bateria" id="Bateria" (change)="setInstrumentoChecado($event)">
+                    <label for="Bateria"> Bateria </label>
+                    <select name="nivelBateria" id="nivelBateria" (change)="setNivelInstrumento($event)">
+                        <option value="" hidden>Nível</option>
+                        <option value="InicianteBateria">Iniciante</option>
+                        <option value="IntermediárioBateria">Intermediário</option>
+                        <option value="AvançadoBateria">Avançado</option>
+                    </select>
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div id="coluna2">
+                    <input type="checkbox" name="Sanfona" id="Sanfona" (change)="setInstrumentoChecado($event)">
+                    <label for="Sanfona"> Sanfona</label>
+                    <select name="nivelSanfona" id="nivelSanfona" (change)="setNivelInstrumento($event)">
+                        <option value="" hidden>Nível</option>
+                        <option value="InicianteSanfona">Iniciante</option>
+                        <option value="IntermediárioSanfona">Intermediário</option>
+                        <option value="AvançadoSanfona">Avançado</option>
+                    </select>
+                    <br>
+                    <input type="checkbox" name="Baixo" id="Baixo" (change)="setInstrumentoChecado($event)">
+                    <label for="Baixo"> Baixo</label>
+                    <select name="nivelBaixo" id="nivelBaixo" (change)="setNivelInstrumento($event)">
+                        <option value="" hidden>Nível</option>
+                        <option value="InicianteBaixo">Iniciante</option>
+                        <option value="IntermediárioBaixo">Intermediário</option>
+                        <option value="AvançadoBaixo">Avançado</option>
+                    </select>
+                    <br>
+                    <input type="checkbox" name="Teclado" id="Teclado" (change)="setInstrumentoChecado($event)">
+                    <label for="Teclado"> Teclado </label>
+                    <select name="nivelTeclado" id="nivelTeclado" (change)="setNivelInstrumento($event)">
+                        <option value="" hidden>Nível</option>
+                        <option value="InicianteTeclado">Iniciante</option>
+                        <option value="IntermediárioTeclado">Intermediário</option>
+                        <option value="AvançadoTeclado">Avançado</option>
+                    </select>
+                    <br>
+                    <input type="checkbox" name="Outro" id="Outro">
+                    <input type="text" name="" id="" placeholder="Outro"
+                        style="width: 120px; height:23px; text-indent: 1px;" [(ngModel)]="outroNomeInstrumento">
+                    <select name="nivelOutro" id="nivelOutro" (change)="setOutroNivelInstrumento($event)">
+                        <option value="" hidden>Nível</option>
+                        <option value="Iniciante">Iniciante</option>
+                        <option value="Intermediário">Intermediário</option>
+                        <option value="Avançado">Avançado</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <label for="instrumentos" style="margin: 0; opacity: .7; margin-top: 10px;">Gêneros musicais</label>
+            <br>
+            <div id="generoMusical">
+                <div id="coluna1">
+                    <input type="checkbox" name="Rock" id="Rock">
+                    <label for="Rock"> Rock </label>
+                    <br>
+                    <input type="checkbox" name="Pop" id="Pop">
+                    <label for="Pop"> Pop </label>
+                    <br>
+                    <input type="checkbox" name="Indie" id="Indie">
+                    <label for="Indie"> Indie </label>
+                    <br>
+                    <input type="checkbox" name="Sertanejo" id="Sertanejo">
+                    <label for="Sertanejo"> Sertanejo </label>
+                    <br>
+                    <input type="checkbox" name="Samba" id="Samba">
+                    <label for="Samba"> Samba </label>
+                </div>
+                <div id="coluna2">
+                    <input type="checkbox" name="MPB" id="MPB">
+                    <label for="MPB"> MPB </label>
+                    <br>
+                    <input type="checkbox" name="Forró" id="Forró">
+                    <label for="Forró"> Forró </label>
+                    <br>
+                    <input type="checkbox" name="Funk" id="Funk">
+                    <label for="Funk"> Funk </label>
+                    <br>
+                    <input type="checkbox" name="Rap" id="Rap">
+                    <label for="Rap"> Rap </label>
+                    <br>
+                    <input type="checkbox" name="Outro" id="Outro">
+                    <input type="text" name="" id="" placeholder="Outro"
+                        style="width: 120px; height:23px; text-indent: 1px;">
+                </div>
+            </div>
+            <br>
+            <button id="publicar" (click)="finalizarCadastro();"><b>Finalizar</b></button>
+        </div>
+    </div>
+
+</div>
