@@ -62,7 +62,6 @@ export class ComplementRegistrationComponent implements OnInit {
         updatedAt: new Date
       }
       this.httpClient.patch(`http://localhost:3000/user/${this.authService.getSignUpUsername()}`, JSON.stringify(objCadastro), this.options).subscribe((res) => {
-      this.router.navigate(['/profile/1']);
     }, err => {
        console.log(err);
       });
@@ -70,6 +69,8 @@ export class ComplementRegistrationComponent implements OnInit {
     } catch (error) {
       console.log("ERRO:" + error);
     } 
+
+    this.router.navigateByUrl('/login');
   }
 
 }

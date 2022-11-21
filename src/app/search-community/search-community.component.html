@@ -129,7 +129,7 @@
             </select>
         </div>
         <button (click)="aplicarFiltros();">Filtrar</button>
-        <button style="background: #df4343 ;" type="reset">Limpar filtros</button>
+        <button style="background: #df4343 ;" (click)="reset();">Limpar filtros</button>
     </div>
 
     <div class="contentResults">
@@ -137,9 +137,9 @@
         <div class="resultados">
             <div id="usuario" *ngFor="let usuario of listaUsuarios" routerLinkActive="active">
 
-                <a [routerLink]="['/profile', usuario.usuario]">
+                <a [routerLink]="['/profile', usuario.usuario]" (change)="profileService.setUserProfile(usuario.usuario)">
                     <div id="imagemUser">
-                        <img src="../../assets/imagens/265022977_504567444335164_4044114440121806328_n.jpg" alt=""
+                        <img src="{{usuario.urlImg}}" alt=""
                             srcset="">
                     </div>
                 </a>
@@ -159,7 +159,7 @@
                     + "-" + usuario.estadoUF}}</label>
 
                 <div id="rodape_usuario">
-                    <button><img src="../../assets/imagens/user-add (1).png" alt="" srcset="">&nbsp;Seguir </button>
+                    <button (click)="seguirUsuario(usuario.usuario);"><img src="../../assets/imagens/user-add (1).png" alt="" srcset="">&nbsp;Seguir </button>
                     <button><img src="../../assets/imagens/user-add (1).png" alt="" srcset="">&nbsp;Mensagem </button>
                 </div>
             </div>

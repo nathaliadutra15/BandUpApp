@@ -9,11 +9,10 @@ import { AuthService } from '../login/auth.service';
 })
 export class ProfileVisitorComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { 
-    if (!this.authService.getAutenticacao()) {
-      this.router.navigate(['/login']);
-    }
+  constructor(private router: Router) { 
+    this.router.navigate(['/']);
   }
+
 
   ngOnInit(): void {
   }

@@ -1,24 +1,16 @@
 <div class="registrationContent">
-    <img src="../../assets/imagens/logo_oficial.png" alt="" srcset=""
-      style="margin: 2vh; position:absolute; width: 25vh;">
-    <div class="infos">
-        <div id="textos">
-            <p id="titulo">ESTAMOS QUASE LÁ!</p>
-            <br>
-            <br>
-
-        </div>
-    </div>
+   
     <div class="form">
+        <br>
         <b>
-            <p style="text-align:left; font-size: 25px; font-weight: 500px; margin: 10px; text-align: center;">Para uma
+            <p style="text-align:left; font-size: 25px; font-weight: 500px; margin: 0px; text-align: center; color:#fff">Para uma
                 melhor experiência na
                 plataforma, por favor,
                 prossiga com o preenchimento das informações solicitadas.</p>
         </b>
         <br>
         <div id="formulario_pessoal">
-            <h1 style=" background: #dddddd;">Dados Pessoais</h1>
+            <h1 >Dados Pessoais</h1>
             <div id="dadosPessoais">
                 <input name="nome" id="nome" placeholder="Nome" type="text" [(ngModel)]="nome">
                 <input name="dtNasc" id="dtNasc" type="text" onfocus="(this.type='date')"
@@ -61,7 +53,8 @@
             <br>
             <div id="instrumentos">
                 <div id="coluna1">
-                    <input type="checkbox" name="Guitarra" id="Guitarra" value="Guitarra" (change)="setInstrumentoChecado($event)">
+                    <input type="checkbox" name="Guitarra" id="Guitarra" value="Guitarra"
+                        (change)="setInstrumentoChecado($event)">
                     <label for="Guitarra"> Guitarra</label>
                     <select name="nivelGuitarra" id="nivelGuitarra" (change)="setNivelInstrumento($event)">
                         <option value="" hidden>Nível</option>

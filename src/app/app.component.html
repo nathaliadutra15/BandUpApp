@@ -2,7 +2,6 @@
     <img id="logo" src="../../assets/imagens/logo_oficial.png" alt="" srcset=""
         style="margin: 5px 10px;top:5px; position:absolute; max-width: 140px; left: 2vh;">
     <nav class="nav">
-        <a routerLink="/profile/1"><span><img src="../../assets/imagens/profile.png" alt="" srcset="" id="chat"></span></a>
         <ul>
             <abbr title="Home">
                 <li routerLinkActive="active">
@@ -18,7 +17,7 @@
             <abbr title="Perfil">
                 <li routerLinkActive="active">
                     <a [routerLink]="['profile', authService.getUserAutenticado()]">
-                        <img src="../assets/imagens/account.png" style="max-width: 25px; min-height: 25px;">
+                        <img src="../assets/imagens/friends.png" style="max-width: 25px; min-height: 25px;">
                     </a>
             </abbr>
             <abbr title="Mensagens">

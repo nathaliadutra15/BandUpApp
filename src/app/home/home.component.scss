@@ -13,9 +13,9 @@
 
 #post_create {
 	background: rgba(255, 255, 255, 0.089);
-    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.37);
-    backdrop-filter: blur(4.5px);
-    -webkit-backdrop-filter: blur(4.5px);
+	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.37);
+	backdrop-filter: blur(4.5px);
+	-webkit-backdrop-filter: blur(4.5px);
 	margin: 0 auto;
 	max-height: 185px;
 	width: 600px;
@@ -29,10 +29,13 @@
 }
 
 
-.feed {
+.feed,
+.postsFromUsers {
 	margin-top: 20px;
 	height: 100%;
 	max-width: 600px;
+	padding:bottom;
+
 }
 
 #profile_pic {
@@ -112,4 +115,50 @@ textarea:focus {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	text-align: left;
+}
+
+#post_create_elementsp{
+	margin: 15px;
+	flex-direction: row;
+	height:20vh
+}
+
+
+
+#texto{
+	right: 0;
+	position: fixed;
+	width: 80%;
+
+}
+
+#nomeUser{
+	font-weight: bold;
+}
+
+#buttonsp {
+	right: 20px;
+	bottom: 20px;
+	position: fixed;
+	display: flex;
+	flex-direction: row;
+	font-size: 17px;
+}
+
+.postsFromUsers{
+	display: flex;
+	flex-direction: row;
+}
+
+#post_createp{
+	background: rgba(255, 255, 255, 0.089);
+	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.37);
+	backdrop-filter: blur(4.5px);
+	-webkit-backdrop-filter: blur(4.5px);
+	margin: 0 auto;
+	max-height: 185px;
+	width: 600px;
+	display: flex;
+	flex-direction: row;
+
 }

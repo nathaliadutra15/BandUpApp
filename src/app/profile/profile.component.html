@@ -1,4 +1,4 @@
-<div class="content-profile">
+<!-- <div class="content-profile">
     <div class="profile">
         <div id="profileImg">
             <img style="max-width: 100%; max-height: 100%; border-radius: 1000px; "
@@ -7,13 +7,136 @@
         <p style="text-align: center; margin-top:30px; font-size:23px; font-weight: bolder;">{{nomeUsuario}}</p>
         <br>
         <div style="text-align: center;">
-            <label for="qtSeguidores">Seguidores <b>{{qtSeguidores}}</b></label> | <label for="qtSeguindo">Seguindo <b>{{qtSeguindo}}</b></label>
+            <label for="qtSeguidores">Seguidores <b>{{qtSeguidores}}</b></label> | <label for="qtSeguindo">Seguindo
+                <b>{{qtSeguindo}}</b></label>
             <br><br>
         </div>
+        <div id="infosCadastro">
+            <nav>
+                <div class="item">
+                    <input type="checkbox" id="check1">
+                    <label for="check1"><img src="../../assets/imagens/toque.png" alt="" srcset=""
+                            style="height:15px; display:inline-block;"> Meus Instrumentos</label>
+                    <ul>
+                        <li *ngFor="let instrumento of instrumentosInfo">{{instrumento.nomeInstrumento}}</li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <input type="checkbox" id="check2">
+                    <label for="check2"><img src="../../assets/imagens/musica-alt.png" alt="" srcset=""
+                            style="height:15px; display:inline-block;"> Meus Estilos Musicais</label>
+                    <ul>
+                        <li *ngFor="let genero of generoMusicalInfo">{{genero}}</li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <input type="checkbox" id="check3">
+                    <label for="check3"><img src="../../assets/imagens/marker.png" alt="" srcset="" style="height:15px; display:inline-block;"> {{localInfo}}</label>
+                </div>
+            </nav>
+        </div>
+        <div id="rodapeProfile">
+            <button>Editar Informações</button>
+            <button style="background: #df4343 ;">Excluir Conta</button>
+        </div>
     </div>
-    
+
     <div class="profileEvents">
 
 
     </div>
 </div>
+ -->
+<div class="content-profile">
+    <div class="profile">
+        <div id="profileImg">
+            <img style="max-width: 100%; max-height: 100%; border-radius: 1000px; "
+            src="{{imgPath}}" alt="" srcset="">
+        </div>
+        <p style="text-align: center; margin-top:30px; font-size:23px; font-weight: bolder;">{{nomeUsuario}}</p>
+        <br>
+        <div style="text-align: center;">
+            <label for="qtSeguidores">Seguidores <b>{{qtSeguidores}}</b></label> | <label for="qtSeguindo">Seguindo
+                <b>{{qtSeguindo}}</b></label>
+            <br><br>
+        </div>
+        <div id="infosCadastro">
+            <nav>
+                <div class="item">
+                    <input type="checkbox" id="check1">
+                    <label for="check1"><img src="../../assets/imagens/toque.png" alt="" srcset=""
+                            style="height:15px; display:inline-block;"> Meus Instrumentos</label>
+                    <ul>
+                        <li *ngFor="let instrumento of instrumentosInfo">{{instrumento.nomeInstrumento}}</li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <input type="checkbox" id="check2">
+                    <label for="check2"><img src="../../assets/imagens/musica-alt.png" alt="" srcset=""
+                            style="height:15px; display:inline-block;"> Meus Estilos Musicais</label>
+                    <ul>
+                        <li *ngFor="let genero of generoMusicalInfo">{{genero}}</li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <input type="checkbox" id="check3">
+                    <label for="check3"><img src="../../assets/imagens/marker.png" alt="" srcset=""
+                            style="height:15px; display:inline-block;"> {{localInfo}}</label>
+                </div>
+                <div class="item">
+                    <input type="checkbox" id="check4">
+                    <label for="check4">Configurações</label>
+                    <ul id="config">
+                        <li id="configs">Editar Informações</li>
+                        <li id="configs" style="">Excluir Conta</li>
+
+                      <!--   <button>Editar Informações</button>
+                        <button style="background: #df4343 ;">Excluir Conta</button> -->
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="profileEvents">
+        <div style="top:0px; background-color: #7a65E9;width: 100%; height:30px; font-size: 25px; position: relative; font-weight: bold;">
+            <p>Meus Posts</p>
+        </div>
+        <div class="postagem" *ngFor="let post of arrPosts">
+            <div id="conteudoPost">
+                <div id="conteudo">
+                    <p>{{post.postTxt}}</p>
+                </div>
+                <div id="botao"></div>
+            </div>
+        </div>
+        
+
+
+    </div>
+    
+</div>
+
+<!-- 
+<div class="content-profileVisitor">
+    <div class="profile">
+        <div id="profileImg">
+            <img style="max-width: 100%; max-height: 100%; border-radius: 1000px; "
+                src="../../assets/imagens/265022977_504567444335164_4044114440121806328_n.jpg" alt="" srcset="">
+        </div>
+        <p style="text-align: center; margin-top:30px; font-size:23px; font-weight: bolder;">Nathália Dutra</p>
+        <br>
+        <div style="text-align: center;">
+            <label for="qtSeguidores">Seguidores <b>20</b></label> | <label for="qtSeguindo">Seguindo <b>20</b></label>
+            <br><br>
+            <button>Seguir</button>&nbsp;&nbsp;<button>Mensagem</button>
+            <br><br>
+            <p>Esta pessoa não te segue.</p>
+        </div>
+
+    </div>
+    <div class="profileEvents">
+
+
+    </div>
+</div> -->

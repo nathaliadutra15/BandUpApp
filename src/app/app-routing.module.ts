@@ -23,6 +23,9 @@ const routes: Routes = [{
   path: 'profile/:username', component: ProfileComponent
 }, {
   path: 'registration', component: ComplementRegistrationComponent
+},
+{
+  path: 'visitor', component: ProfileVisitorComponent
 }];
 
 @NgModule({

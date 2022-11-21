@@ -1,16 +1,15 @@
 <div class="content">
     <div class="profile">
-        <p>oi</p>
-
     </div>
     <div class="feed">
-        <div id="post_create">
+        <div id="post_createp">
             <div id="post_create_elements">
                 <div id="profile_pic" style="position:absolute;">
                     <img src="../../assets/imagens/profile.png" alt="" srcset=""
                         style="max-width: 70px;max-height: 70px; position:static;">
                 </div>
-                <textarea name="" id="" cols="45" rows="1" placeholder="Escreva aqui seu post" [(ngModel)]="postTxt"></textarea>
+                <textarea name="" id="" cols="45" rows="1" placeholder="Escreva aqui seu post"
+                    [(ngModel)]="postTxt"></textarea>
                 <br>
                 <p id="mediaName">{{fileName}}</p>
                 <div id="buttons">
@@ -33,7 +32,8 @@
                             <img src="../../assets/imagens/camera.png" alt="" srcset=""
                                 style="width: 23px; height: 23px;">
                         </label>
-                        <input type="file" name="pic_file" id="pic_file" accept="image/png, image/gif, image/jpeg, video/*" style="display:none"
+                        <input type="file" name="pic_file" id="pic_file"
+                            accept="image/png, image/gif, image/jpeg, video/*" style="display:none"
                             (change)="onChangePic($event)" [(ngModel)]="imageFileName">
                     </abbr>
                     &nbsp;
@@ -41,9 +41,51 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="atalhos">
-        <p>oi</p>
+        <br>
 
+        <div id="post_create" *ngFor="let post of followingUsers">
+            <div class="postsFromUsers">
+                <div id="post_create_elementsp">
+                    <div id="profile_pic" style="position:absolute;">
+                        <img src="{{authService.getUserImageVisitor(post.usuario)}}" alt=""
+                            srcset=""
+                            style="max-width: 70px;max-height: 70px; position:fixed; border-radius: 200px; left: 10px;">
+                    </div>
+                    <div id="texto">
+                        <p id="nomeUser">{{post.usuario}}</p>
+                        <br>
+                        <p>{{post.postTxt}}</p>
+                    </div>
+                    <div id="buttonsp">
+                        <abbr title="Curtir">
+                            <label for="like">
+                                <img src="../../assets/imagens/heart.png" alt="" srcset=""
+                                    style="width: 23px; height: 23px; cursor: pointer;">
+                            </label>
+                            <input type="submit" name="like" id="like" style="display:none"
+                                (click)="setLike(authService.getUserAutenticado(), post._id)">
+                        </abbr>
+                        &nbsp;
+                        <abbr title="Criar evento">
+                            <p style="width: 23px; height: 23px;">{{post.likes.length}}</p>
+
+                        </abbr>
+                        &nbsp;
+
+                        &nbsp;
+                        <abbr title="Compartilhar">
+                            <img src="../../assets/imagens/share.png" alt="" srcset=""
+                                style="width: 23px; height: 23px;">
+                        </abbr>
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br>
+    </div>
+
+    <div class="atalhos">
     </div>
 </div>

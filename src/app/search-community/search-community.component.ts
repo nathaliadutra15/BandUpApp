@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../login/auth.service';
+import { ProfileServiceService } from '../profile/profile-service.service';
 
 @Component({
   selector: 'app-search-community',
@@ -20,8 +21,8 @@ export class SearchCommunityComponent implements OnInit {
   public nomeBusca: string;
   public nivelInstrumento;
 
-  public cidade="";
-  public uf="";
+  public cidade = "";
+  public uf = "";
 
   public isOutroInstrumento: boolean = false;
   public isOutroGenero: boolean = false;
@@ -30,10 +31,10 @@ export class SearchCommunityComponent implements OnInit {
 
   public listaNiveis = ["Iniciante", "Intermediário", "Avançado"];
 
-  constructor(private httpClient: HttpClient, private authService: AuthService, private router: Router) {
+  constructor(private httpClient: HttpClient, private authService: AuthService, private router: Router, public profileService: ProfileServiceService) {
     if (!this.authService.getAutenticacao()) {
-       this.router.navigate(['/login']);
-     }
+      this.router.navigate(['/login']);
+    }
 
 
   }
@@ -42,17 +43,18 @@ export class SearchCommunityComponent implements OnInit {
     this.listarTodosUsuarios();
   }
 
-  reset(){
-    this.router.navigate(['/login']);
+  reset() {
+    this.router.navigateByUrl('/music-lab');
   }
 
   listarTodosUsuarios() {
+    let img;
     try {
       this.httpClient.get('http://localhost:3000/user/list', this.options).subscribe((res) => {
         let data = res;
         for (let i = 0; i < Object.keys(data).length; i++) {
           if (data[i].usuario != this.authService.getUserAutenticado()) {
-            this.listaUsuarios[i] = data[i];
+            this.listaUsuarios.push(data[i]);
           }
         }
       }, err => {
@@ -62,6 +64,9 @@ export class SearchCommunityComponent implements OnInit {
     } catch (error) {
       console.log("ERRO:" + error);
     }
+
+    this.listaUsuarios = this.listaUsuarios.filter(usuario => usuario != null);
+    console.log(this.listaUsuarios);
   }
 
   buscarNomeUsuario() {
@@ -82,26 +87,8 @@ export class SearchCommunityComponent implements OnInit {
 
   seguirUsuario(username) {
     try {
-      let objSeguidor = {
-        seguidores: [{
-          usuario: this.authService.getUserAutenticado()
-        }]
-      };
-
-      let objSeguindo = {
-        seguindo: [{
-          usuario: username
-        }]
-      }
-
-      //Adiciona na conta atual o usuário que está seguindo
-      this.httpClient.patch(`http://localhost:3000/user/${this.authService.getUserAutenticado()}`, JSON.stringify(objSeguindo), this.options).subscribe((res) => {
-
-        //Adiciona na conta do outro usuário um seguidor
-        this.httpClient.patch(`http://localhost:3000/user/${username}`, JSON.stringify(objSeguidor), this.options).subscribe((res) => {
-        }, err => {
-          console.log(err);
-        });
+      this.httpClient.post(`http://localhost:3000/user/follow/${this.authService.getUserAutenticado()}/${username}`, this.options).subscribe((res) => {
+        console.log(res);
       }, err => {
         console.log(err);
       });
